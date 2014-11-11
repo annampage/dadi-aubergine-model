@@ -26,7 +26,7 @@ def parallel_domestication((nu1F, nu2B, nu2F, nu3B, nu3F, T1, T2, T3, T2B, T3B),
     """
 
     #create grid
-    xx = yy = dadi.Numerics.default_grid(pts)
+    xx = dadi.Numerics.default_grid(pts)
 
     #phi for equilibrium ancestral population
     phi=PhiManip.phi_1D(xx)
@@ -55,6 +55,6 @@ def parallel_domestication((nu1F, nu2B, nu2F, nu3B, nu3F, T1, T2, T3, T2B, T3B),
     phi=Integration.three_pops(phi,xx,nu1=nu1F,nu2=nu2F,nu3=nu3F,m12=m12, m13=m13, m21=m21, m23=m23, m31=m31, m32=m32)
 
     #calculate spectrum
-    sfs = dadi.Spectrum.from_phi(phi, (n1,n2), (xx,yy))
+    fs = dadi.Spectrum.from_phi(nx=3, ny=6, nz=15, xx, xx, xx, phi))
 
-    return sfs
+    return fs
